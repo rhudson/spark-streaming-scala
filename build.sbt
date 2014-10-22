@@ -5,6 +5,10 @@ name := """spark-streaming-scala"""
 
 scalaVersion := "2.10.4"
 
+// When running the assembly task it is important to exclude the Spark and Hadoop dependencies
+//libraryDependencies ++= Dependencies.sparkAkkaHadoopProvided
+
+// The class path needs to have provided dependencies when using the runMain task
 libraryDependencies ++= Dependencies.sparkAkkaHadoop
 
 releaseSettings
@@ -19,3 +23,6 @@ initialCommands in console := """
   |import akka.actor.{ActorSystem, Props}
   |import com.typesafe.config.ConfigFactory
   |""".stripMargin
+
+//runMain in Compile <<= Defaults.runTask(fullClasspath in Compile, mainClass in (Compile, runMain), runner in (Compile, runMain)) 
+

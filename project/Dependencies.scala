@@ -26,6 +26,16 @@ object Dependencies {
 
   import Library._
 
+  val sparkAkkaHadoopProvided = Seq(
+    sparkStreaming % "provided",
+    akkaActor,
+    akkaTestKit,
+    hadoopClient % "provided",
+    logbackClassic % "test",
+    scalaTest % "test",
+    mockitoAll % "test"
+  )
+
   val sparkAkkaHadoop = Seq(
     sparkStreaming,
     akkaActor,
